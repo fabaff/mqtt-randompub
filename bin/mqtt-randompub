@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: UTF8 -*-
+#
+# This file is part of mqtt-randompub.
+#
+# Copyright (c) 2013 Fabian Affolter <fabian at affolter-engineering.ch>
+# Released under the MIT license. See LICENSE file for details.
+#
+import mqtt_randompub
+
+mqtt_randompub.module.start()
