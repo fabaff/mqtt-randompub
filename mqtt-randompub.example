@@ -1,0 +1,13 @@
+[MQTT]
+broker = 127.0.0.1
+port = 1883
+qos = 0
+
+[Topic]
+topic = test
+subtopic1 = aaa, bbb, cccc
+subtopic2 = 1111, 2222, 3333
+
+[Payload]
+load = Sample payload loaded from configuration file
+
