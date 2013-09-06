@@ -59,7 +59,7 @@ def argparsing():
                         help='set the second subtopic')
     parser.add_argument('-l', '--load',
                         help='what to use as message payload')
-    parser.add_argument('-i', '--interval',
+    parser.add_argument('-i', '--interval', default=1.0,
                         help='time in seconds between the messages')
     parser.add_argument('-n', '--number', default=1,
                         help='number of messages to send. set to 0 for running ')

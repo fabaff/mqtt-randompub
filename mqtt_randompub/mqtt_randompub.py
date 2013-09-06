@@ -66,14 +66,10 @@ def main_run(argv=None):
 
     args = opthandling.argparsing()
 
-    # Set a default interval of one sec if no value is given
-    interval = 1.0
-    if args.interval:
-        interval = float(args.interval)
-    
     if args.number:
         send(args.broker, args.port, args.qos, int(args.number), 
-            interval, args.topic, args.subtopic1, args.subtopic2, args.load)
+            float(args.interval), args.topic, args.subtopic1, args.subtopic2, 
+            args.load)
 
 def main():
     '''Main program entry point'''
