@@ -25,8 +25,16 @@ sudo python-pip install mqtt-randompub
 
 - [mosquitto](http://mosquitto.org/)
 
+On a Fedora system:
+
 ```
-sudo yum -y install mosquitto
+sudo yum -y install mosquitto-python
+```
+
+On Debian and perhaps its downstream Ubuntu (not tested):
+
+```
+sudo apt-get install python-mosquitto_pub
 ```
 
 ## Usage
