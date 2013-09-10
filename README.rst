@@ -15,22 +15,23 @@ Prerequisites/Installation
 
 Get the files
 _____________
-Clone the `mqtt-randompub` [repository](https://github.com/fabaff/mqtt-randompub):
+Clone the ``mqtt-randompub`` `repository`_::
 
     git clone git@github.com:fabaff/mqtt-randompub.git
 
-or use `pip`_ to make an installation.
+or use `pip`_ to make an installation.::
 
     sudo python-pip install mqtt-randompub
 
+.. _repository: https://github.com/fabaff/mqtt-randompub
 .. _pip: https://pypi.python.org/pypi/mqtt-randompub
 
 Dependencies
 ____________
 ``mqtt-randompub`` depends on a couple of additional pieces: 
 
-- [Python](http://www.python.org)
-- [mosquitto](http://mosquitto.org/)
+- `Python`_
+- `mosquitto`_
 
 On a Fedora system::
 
@@ -39,6 +40,9 @@ On a Fedora system::
 On Debian and perhaps its downstream Ubuntu (not tested)::
 
     sudo apt-get install python-mosquitto_pub
+
+.. _Python: http://www.python.org
+.. _mosquitto: http://mosquitto.org/
 
 Usage
 -----
