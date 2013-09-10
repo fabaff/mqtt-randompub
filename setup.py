@@ -24,7 +24,6 @@ if __name__ == '__main__':
         license = 'MIT',
         platforms = 'Linux',
         packages = ['mqtt_randompub'],
-#        scripts = ['bin/mqtt-randompub'],
         entry_points = {
             'console_scripts': ['mqtt-randompub = mqtt_randompub.mqtt_randompub:main']
         },
@@ -33,7 +32,7 @@ if __name__ == '__main__':
         keywords = ['MQTT','System','Messages'],
         classifiers = [
                 'Development Status :: 4 - Beta',
-                'Environment :: Console'
+                'Environment :: Console',
                 'Intended Audience :: System Administrators',
                 'Intended Audience :: Developers',
                 'License :: OSI Approved :: MIT License',
