@@ -1,8 +1,12 @@
-# Compiled python modules.
+# Exclude compiled python files/modules
 *.pyc
 
-# Setuptools distribution folder.
+# Exclude the setuptools distribution folder
 /dist/
 
-# Python egg metadata, regenerated from source files by setuptools.
+# Exclude the build folder
+/build/
+
+# Exclude python egg metadata
 /*.egg-info
+/*.egg
