@@ -5,17 +5,15 @@
 #
 from setuptools import setup
 
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 if __name__ == '__main__':
     setup(
         name = 'mqtt-randompub',
         version="0.1",
         description = 'Tool for generating MQTT messages on various topics',
-        long_description = """For testing application and tools which are \
-            handling MQTT (http://mqtt.org/) messages it's often needed to \
-            send continuously messages on random topics to a broker. \
-            mqtt-randompub contains options to send a single message, a \
-            specific count of messages, or a constante flow of messages \
-            till the tool is terminated.""",
+        long_description = read('README.rst'),
         author = 'Fabian Affolter',
         author_email = 'fabian@affolter-engineering.ch',
         maintainer = 'Fabian Affolter',
