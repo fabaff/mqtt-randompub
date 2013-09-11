@@ -78,6 +78,9 @@ def str2list(string):
         str_lst[i] = s.strip()
     return str_lst
 
+def generate_random_num():
+    return random.randrange(0, 30, 1)
+
 def generate_timestamp():
     timestamp = int(time.time())
     return timestamp
