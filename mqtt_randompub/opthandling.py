@@ -39,7 +39,7 @@ def argparsing():
                           'subtopic1' : ['a', 'b', 'c'],
                           'subtopic2' : [0, 1]
                         }
-        default_payload = { 'load' : '#### This is a test message. ' }
+        default_payload = { 'load' : '#### This is a test message.' }
 
     parser = argparse.ArgumentParser(parents=[conf_parser])
     parser.set_defaults(**default_mqtt)
@@ -62,7 +62,9 @@ def argparsing():
     parser.add_argument('-i', '--interval', default=1.0,
                         help='time in seconds between the messages')
     parser.add_argument('-n', '--number', default=1,
-                        help='number of messages to send. set to 0 for running ')
+                        help='number of messages to send. set to 0 for running')
+    parser.add_argument('-w', '--timestamp', default=False, action='store_true',
+                        help='add a timestamp to the payload message')
 
     args = parser.parse_args(remaining_argv)
     return args

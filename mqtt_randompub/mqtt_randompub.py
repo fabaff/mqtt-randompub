@@ -7,14 +7,15 @@ import random
 import time
 import sys
 import os
+import signal
 import itertools
 
 import mosquitto
 
 import opthandling
-import settings
 
-def send(broker, port, qos, number, interval, topic, subtopic1, subtopic2, payload):
+def send(broker, port, qos, number, interval, topic,
+         subtopic1, subtopic2, payload, random, timestamp):
     count = 1
     mqttclient = mosquitto.Mosquitto("mqtt-randompub")
     mqttclient.connect(broker, port=int(port))
@@ -24,18 +25,35 @@ def send(broker, port, qos, number, interval, topic, subtopic1, subtopic2, paylo
             % topic
         while True:
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
-            mqttclient.publish(complete_topic, payload)
+            message = generate_message(payload, timestamp)
+            mqttclient.publish(complete_topic, message)
             time.sleep(interval)
     elif number == 1:
         complete_topic = generate_topic(topic, subtopic1, subtopic2)
-        mqttclient.publish(complete_topic, payload)
+        message = generate_message(payload, timestamp)
+        mqttclient.publish(complete_topic, message)
     else:
         for x in range(1, number + 1):
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
-            mqttclient.publish(complete_topic, (str(count) + payload))
+            message = generate_message(payload, timestamp)
+            mqttclient.publish(complete_topic, (str(count) + message))
             count = count + 1
             time.sleep(interval)
     mqttclient.disconnect()
+
+def generate_message(payload, timestamp):
+    if type(payload) != list:
+        payload_lst = str2list(payload)
+        gen_payload = random_subtopic(payload_lst)
+    else:
+        gen_payload = random_subtopic(payload)
+
+    if timestamp:
+        generated_payload = gen_payload + ' ' + str(generate_timestamp())
+    else:
+        generated_payload = gen_payload
+
+    return generated_payload
 
 def generate_topic(topic, subtopic1, subtopic2):
     if type(subtopic1) != list:
@@ -60,24 +78,27 @@ def str2list(string):
         str_lst[i] = s.strip()
     return str_lst
 
-def main_run(argv=None):
-    if argv is None:
-        argv = sys.argv
+def generate_timestamp():
+    timestamp = int(time.time())
+    return timestamp
 
+def main():
+#    if argv is None:
+#        argv = sys.argv
+#argv=None
     args = opthandling.argparsing()
-
+   
     if args.number:
         send(args.broker, args.port, args.qos, int(args.number), 
             float(args.interval), args.topic, args.subtopic1, args.subtopic2, 
-            args.load)
+            args.load, args.random, args.timestamp)
 
-def main():
-    '''Main program entry point'''
+if __name__ == '__main__':
+    """Main program entry point"""
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
     try:
-        sys.exit(main_run(sys.argv))
+        #sys.exit(main(sys.argv))
+        sys.exit(main())
     except KeyboardInterrupt:
         print 'Interrupted, exiting...'
         sys.exit(1)
-
-if __name__ == '__main__':
-    main()
