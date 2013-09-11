@@ -4,11 +4,11 @@ mqtt-randompub
 For testing application and tools which are handling `MQTT`_ messages it's
 often needed to send continuously messages on random topics to a broker. 
 ``mqtt-randompub`` contains options to send a single message, a specific count
-of messages, or a constante flow of messages till the tool is terminated.
+of messages, or a constant flow of messages till the tool is terminated.
 Configuration files can be used to store lists of topics to create repeatable
 test scenarios.
 
-.. _MQTT:http://mqtt.org/ 
+.. _MQTT: http://mqtt.org/ 
 
 Prerequisites/Installation
 --------------------------
