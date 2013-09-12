@@ -4,6 +4,7 @@
 # Released under the MIT license. See LICENSE file for details.
 #
 from setuptools import setup
+import os
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -11,7 +12,7 @@ def read(fname):
 if __name__ == '__main__':
     setup(
         name = 'mqtt-randompub',
-        version="0.1",
+        version="0.1.1",
         description = 'Tool for generating MQTT messages on various topics',
         long_description = read('README.rst'),
         author = 'Fabian Affolter',
