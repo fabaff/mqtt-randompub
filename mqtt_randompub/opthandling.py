@@ -20,7 +20,7 @@ def argparsing():
         formatter_class = argparse.RawDescriptionHelpFormatter,
         add_help = False
         )
-    conf_parser.add_argument('-c', '--config',
+    conf_parser.add_argument('-f', '--config',
                              help='configuration file to use')
     args, remaining_argv = conf_parser.parse_known_args()
 
@@ -67,6 +67,8 @@ def argparsing():
                         help='generate random messages on the topic test/*')
     parser.add_argument('-w', '--timestamp', default=False, action='store_true',
                         help='add a timestamp to the payload message')
+    parser.add_argument('-c', '--counter', default=False, action='store_true',
+                        help='add a counter to the payload message')
 
     args = parser.parse_args(remaining_argv)
     return args

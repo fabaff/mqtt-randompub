@@ -15,7 +15,7 @@ import mosquitto
 import opthandling
 
 def send(broker, port, qos, number, interval, topic,
-         subtopic1, subtopic2, payload, random, timestamp):
+         subtopic1, subtopic2, payload, random, timestamp, counter):
     count = 1
     mqttclient = mosquitto.Mosquitto("mqtt-randompub")
     mqttclient.connect(broker, port=int(port))
@@ -26,8 +26,12 @@ def send(broker, port, qos, number, interval, topic,
         while True:
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp)
-            mqttclient.publish(complete_topic, message)
+            if counter:
+                mqttclient.publish(complete_topic, (str(count) + ' ' + message))
+            else:
+                mqttclient.publish(complete_topic, message)
             time.sleep(interval)
+            count = count + 1
     elif number == 1:
         complete_topic = generate_topic(topic, subtopic1, subtopic2)
         message = generate_message(payload, timestamp)
@@ -36,7 +40,10 @@ def send(broker, port, qos, number, interval, topic,
         for x in range(1, number + 1):
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp)
-            mqttclient.publish(complete_topic, (str(count) + message))
+            if counter:
+                mqttclient.publish(complete_topic, (str(count) + ' ' + message))
+            else:
+                mqttclient.publish(complete_topic, message)
             count = count + 1
             time.sleep(interval)
     mqttclient.disconnect()
@@ -52,7 +59,6 @@ def generate_message(payload, timestamp):
         generated_payload = gen_payload + ' ' + str(generate_timestamp())
     else:
         generated_payload = gen_payload
-
     return generated_payload
 
 def generate_topic(topic, subtopic1, subtopic2):
@@ -94,7 +100,7 @@ def main():
     if args.number:
         send(args.broker, args.port, args.qos, int(args.number), 
             float(args.interval), args.topic, args.subtopic1, args.subtopic2, 
-            args.load, args.random, args.timestamp)
+            args.load, args.random, args.timestamp, args.counter)
 
 if __name__ == '__main__':
     """Main program entry point"""
