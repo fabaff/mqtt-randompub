@@ -10,14 +10,17 @@ import os
 import signal
 import itertools
 
-import mosquitto
+try:
+    import paho.mqtt.client as mqtt
+except ImportError:
+    print 'Please install the paho-mqtt module to use mqtt-randompub'
 
 import opthandling
 
 def send(broker, port, qos, number, interval, topic,
          subtopic1, subtopic2, payload, random, timestamp, counter):
     count = 1
-    mqttclient = mosquitto.Mosquitto("mqtt-randompub")
+    mqttclient = mqtt.Client("mqtt-randompub")
     mqttclient.connect(broker, port=int(port))
 
     if number == 0:
