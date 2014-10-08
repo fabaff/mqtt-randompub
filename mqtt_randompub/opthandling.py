@@ -1,6 +1,6 @@
 # This file is part of mqtt-randompub
 #
-# Copyright (c) 2013 Fabian Affolter <fabian at affolter-engineering.ch>
+# Copyright (c) 2013-2014, Fabian Affolter <fabian at affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 import argparse
@@ -64,7 +64,7 @@ def argparsing():
     parser.add_argument('-n', '--number', default=1,
                         help='number of messages to send. set to 0 for running')
     parser.add_argument('-r', '--random', default=False, action='store_true',
-                        help='generate random messages on the topic test/*')
+                        help='generate a random numerical payload')
     parser.add_argument('-w', '--timestamp', default=False, action='store_true',
                         help='add a timestamp to the payload message')
     parser.add_argument('-c', '--counter', default=False, action='store_true',
