@@ -1,6 +1,6 @@
 # This file is part of mqtt-randompub
 #
-# Copyright (c) 2013 Fabian Affolter <fabian at affolter-engineering.ch>
+# Copyright (c) 2013-2014 Fabian Affolter <fabian at affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 from setuptools import setup
@@ -12,7 +12,7 @@ def read(fname):
 if __name__ == '__main__':
     setup(
         name = 'mqtt-randompub',
-        version="0.1.1",
+        version="0.2.0",
         description = 'Tool for generating MQTT messages on various topics',
         long_description = read('README.rst'),
         author = 'Fabian Affolter',
@@ -27,7 +27,7 @@ if __name__ == '__main__':
             'console_scripts': ['mqtt-randompub = mqtt_randompub.mqtt_randompub:main']
         },
         include_package_data = True,
-        install_requires=['mosquitto'],
+        install_requires=['paho-mqtt'],
         keywords = ['MQTT','System','Messages'],
         classifiers = [
                 'Development Status :: 4 - Beta',
