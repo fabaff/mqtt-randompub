@@ -28,21 +28,15 @@ or use `pip`_ to make an installation.::
 
 Dependencies
 ____________
-``mqtt-randompub`` depends on a couple of additional pieces: 
-
-- `Python`_
-- `mosquitto`_
+``mqtt-randompub`` depends only on `paho-mqtt`_ . This module should be
+pulled in automatically when installed with `pip`_. 
 
 On a Fedora system::
 
-    sudo yum -y install mosquitto-python
-
-On Debian and perhaps its downstream Ubuntu (not tested)::
-
-    sudo apt-get install python-mosquitto_pub
+    sudo yum -y install python-paho-mqtt
 
 .. _Python: http://www.python.org
-.. _mosquitto: http://mosquitto.org/
+.. _paho-mqtt: https://pypi.python.org/pypi/paho-mqtt
 
 Usage
 -----
