@@ -1,6 +1,6 @@
 # This file is part of mqtt-randompub
 #
-# Copyright (c) 2013, Fabian Affolter <fabian@affolter-engineering.ch>
+# Copyright (c) 2013-2014, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 import random
@@ -25,21 +25,21 @@ def send(broker, port, qos, number, interval, topic,
             % topic
         while True:
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
-            message = generate_message(payload, timestamp)
+            message = generate_message(payload, timestamp, random)
             if counter:
                 mqttclient.publish(complete_topic, (str(count) + ' ' + message))
             else:
-                mqttclient.publish(complete_topic, message)
+                mqttclient.publish(complete_topic, message, random)
             time.sleep(interval)
             count = count + 1
     elif number == 1:
         complete_topic = generate_topic(topic, subtopic1, subtopic2)
-        message = generate_message(payload, timestamp)
+        message = generate_message(payload, timestamp, random)
         mqttclient.publish(complete_topic, message)
     else:
         for x in range(1, number + 1):
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
-            message = generate_message(payload, timestamp)
+            message = generate_message(payload, timestamp, random)
             if counter:
                 mqttclient.publish(complete_topic, (str(count) + ' ' + message))
             else:
@@ -48,17 +48,19 @@ def send(broker, port, qos, number, interval, topic,
             time.sleep(interval)
     mqttclient.disconnect()
 
-def generate_message(payload, timestamp):
-    if type(payload) != list:
-        payload_lst = str2list(payload)
-        gen_payload = random_subtopic(payload_lst)
+def generate_message(payload, timestamp, random):
+    if random:
+        generated_payload = generate_random_num()
     else:
-        gen_payload = random_subtopic(payload)
-
-    if timestamp:
-        generated_payload = gen_payload + ' ' + str(generate_timestamp())
-    else:
-        generated_payload = gen_payload
+        if type(payload) != list:
+            payload_lst = str2list(payload)
+            gen_payload = random_subtopic(payload_lst)
+        else:
+            gen_payload = random_subtopic(payload)
+        if timestamp:
+            generated_payload = gen_payload + ' ' + str(generate_timestamp())
+        else:
+            generated_payload = gen_payload
     return generated_payload
 
 def generate_topic(topic, subtopic1, subtopic2):
@@ -85,16 +87,15 @@ def str2list(string):
     return str_lst
 
 def generate_random_num():
-    return random.randrange(0, 30, 1)
+    return random.randrange(0, 100, 1)
 
 def generate_timestamp():
     timestamp = int(time.time())
     return timestamp
 
-def main():
-#    if argv is None:
-#        argv = sys.argv
-#argv=None
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
     args = opthandling.argparsing()
    
     if args.number:
@@ -106,8 +107,8 @@ if __name__ == '__main__':
     """Main program entry point"""
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     try:
-        #sys.exit(main(sys.argv))
-        sys.exit(main())
+        sys.exit(main(sys.argv))
+        #sys.exit(main())
     except KeyboardInterrupt:
         print 'Interrupted, exiting...'
         sys.exit(1)
