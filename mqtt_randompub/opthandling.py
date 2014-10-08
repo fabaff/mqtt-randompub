@@ -39,7 +39,7 @@ def argparsing():
                           'subtopic1' : ['a', 'b', 'c'],
                           'subtopic2' : [0, 1]
                         }
-        default_payload = { 'load' : '#### This is a test message.' }
+        default_payload = { 'load' : '#### This is a message from mqtt-randompub.' }
 
     parser = argparse.ArgumentParser(parents=[conf_parser])
     parser.set_defaults(**default_mqtt)
