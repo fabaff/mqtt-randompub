@@ -1,6 +1,6 @@
 # This file is part of mqtt-randompub
 #
-# Copyright (c) 2013-2014, Fabian Affolter <fabian at affolter-engineering.ch>
+# Copyright (c) 2013-2015, Fabian Affolter <fabian at affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 import argparse

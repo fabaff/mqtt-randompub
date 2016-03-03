@@ -1,6 +1,6 @@
 # This file is part of mqtt-randompub
 #
-# Copyright (c) 2013-2014, Fabian Affolter <fabian@affolter-engineering.ch>
+# Copyright (c) 2013-2016, Fabian Affolter <fabian@affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 import random
@@ -13,7 +13,7 @@ import itertools
 try:
     import paho.mqtt.client as mqtt
 except ImportError:
-    print 'Please install the paho-mqtt module to use mqtt-randompub'
+    print('Please install the paho-mqtt module to use mqtt-randompub.')
 
 import opthandling
 
@@ -24,8 +24,8 @@ def send(broker, port, qos, number, interval, topic,
     mqttclient.connect(broker, port=int(port))
 
     if number == 0:
-        print 'Messages are published on topic %s/#... -> CTRL + C to shutdown' \
-            % topic
+        print('Messages are published on topic %s/#... ',
+              '->CTRL + C to shutdown', topic)
         while True:
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp, random)
@@ -113,5 +113,5 @@ if __name__ == '__main__':
         sys.exit(main(sys.argv))
         #sys.exit(main())
     except KeyboardInterrupt:
-        print 'Interrupted, exiting...'
+        print('Interrupted, exiting...')
         sys.exit(1)
