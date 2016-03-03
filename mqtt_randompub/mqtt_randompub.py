@@ -1,8 +1,9 @@
-# This file is part of mqtt-randompub
-#
-# Copyright (c) 2013-2016, Fabian Affolter <fabian@affolter-engineering.ch>
-# Released under the MIT license. See LICENSE file for details.
-#
+"""
+This file is part of mqtt-randompub
+
+Copyright (c) 2013-2016, Fabian Affolter <fabian@affolter-engineering.ch>
+Released under the MIT license. See LICENSE file for details.
+"""
 import random
 import time
 import sys
@@ -19,6 +20,7 @@ import opthandling
 
 def send(broker, port, qos, number, interval, topic,
          subtopic1, subtopic2, payload, random, timestamp, counter):
+    """Send messages to MQTT broker."""
     count = 1
     mqttclient = mqtt.Client("mqtt-randompub")
     mqttclient.connect(broker, port=int(port))
@@ -52,6 +54,7 @@ def send(broker, port, qos, number, interval, topic,
     mqttclient.disconnect()
 
 def generate_message(payload, timestamp, random):
+    """The generator for the messages."""
     if random:
         generated_payload = generate_random_num()
     else:
@@ -67,6 +70,7 @@ def generate_message(payload, timestamp, random):
     return generated_payload
 
 def generate_topic(topic, subtopic1, subtopic2):
+    """The generator for the topic."""
     if type(subtopic1) != list:
         stopic1_lst = str2list(subtopic1)
         stopic1 = random_subtopic(stopic1_lst)
@@ -81,22 +85,27 @@ def generate_topic(topic, subtopic1, subtopic2):
     return generated_topic
 
 def random_subtopic(list):
+    """Return a random topic."""
     return random.choice(list)
 
 def str2list(string):
+    """Return a list of strings."""
     str_lst = string.split(',')
     for i, s in enumerate(str_lst):
         str_lst[i] = s.strip()
     return str_lst
 
 def generate_random_num():
+    """Return a random generated number."""
     return random.randrange(0, 100, 1)
 
 def generate_timestamp():
+    """Return the current timestamp."""
     timestamp = int(time.time())
     return timestamp
 
 def main(argv=None):
+    """Main"""
     if argv is None:
         argv = sys.argv
     args = opthandling.argparsing()
