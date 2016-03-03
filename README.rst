@@ -33,7 +33,7 @@ pulled in automatically when installed with `pip`_.
 
 On a Fedora system::
 
-    sudo yum -y install python-paho-mqtt
+    sudo dnf -y install python-paho-mqtt
 
 .. _Python: http://www.python.org
 .. _paho-mqtt: https://pypi.python.org/pypi/paho-mqtt
