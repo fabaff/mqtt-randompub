@@ -1,6 +1,6 @@
 # This file is part of mqtt-randompub
 #
-# Copyright (c) 2013-2015, Fabian Affolter <fabian at affolter-engineering.ch>
+# Copyright (c) 2013-2016, Fabian Affolter <fabian at affolter-engineering.ch>
 # Released under the MIT license. See LICENSE file for details.
 #
 import argparse
@@ -31,15 +31,15 @@ def argparsing():
         default_topic = dict(config.items("Topic"))
         default_payload = dict(config.items("Payload"))
     else:
-        default_mqtt = { 'broker' : '127.0.0.1',
-                         'port' : '1883',
-                         'qos' : '0'
+        default_mqtt = {'broker' : '127.0.0.1',
+                        'port' : '1883',
+                        'qos' : '0'
                         }
-        default_topic = { 'topic' : 'test',
-                          'subtopic1' : ['a', 'b', 'c'],
-                          'subtopic2' : [0, 1]
+        default_topic = {'topic' : 'test',
+                         'subtopic1' : ['a', 'b', 'c'],
+                         'subtopic2' : [0, 1]
                         }
-        default_payload = { 'load' : '#### This is a message from mqtt-randompub.' }
+        default_payload = {'load' : '## Test message from mqtt-randompub.'}
 
     parser = argparse.ArgumentParser(parents=[conf_parser])
     parser.set_defaults(**default_mqtt)
