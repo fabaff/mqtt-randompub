@@ -16,7 +16,8 @@ try:
 except ImportError:
     print('Please install the paho-mqtt module to use mqtt-randompub.')
 
-import opthandling
+from mqtt_randompub import opthandling
+
 
 def send(broker, port, qos, number, interval, topic,
          subtopic1, subtopic2, payload, random, timestamp, counter):
@@ -32,7 +33,8 @@ def send(broker, port, qos, number, interval, topic,
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp, random)
             if counter:
-                mqttclient.publish(complete_topic, (str(count) + ' ' + message))
+                mqttclient.publish(complete_topic,
+                                   '{} {}'.format(str(count), message))
             else:
                 mqttclient.publish(complete_topic, message, random)
             time.sleep(interval)
@@ -46,12 +48,14 @@ def send(broker, port, qos, number, interval, topic,
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp, random)
             if counter:
-                mqttclient.publish(complete_topic, (str(count) + ' ' + message))
+                mqttclient.publish(complete_topic,
+                                   '{} {}'.format(str(count), message))
             else:
                 mqttclient.publish(complete_topic, message)
             count = count + 1
             time.sleep(interval)
     mqttclient.disconnect()
+
 
 def generate_message(payload, timestamp, random):
     """The generator for the messages."""
@@ -69,6 +73,7 @@ def generate_message(payload, timestamp, random):
             generated_payload = gen_payload
     return generated_payload
 
+
 def generate_topic(topic, subtopic1, subtopic2):
     """The generator for the topic."""
     if type(subtopic1) != list:
@@ -84,9 +89,11 @@ def generate_topic(topic, subtopic1, subtopic2):
     generated_topic = topic + '/' + str(stopic1) + '/' + str(stopic2)
     return generated_topic
 
+
 def random_subtopic(list):
     """Return a random topic."""
     return random.choice(list)
+
 
 def str2list(string):
     """Return a list of strings."""
@@ -95,32 +102,34 @@ def str2list(string):
         str_lst[i] = s.strip()
     return str_lst
 
+
 def generate_random_num():
     """Return a random generated number."""
     return random.randrange(0, 100, 1)
+
 
 def generate_timestamp():
     """Return the current timestamp."""
     timestamp = int(time.time())
     return timestamp
 
+
 def main(argv=None):
     """Main"""
     if argv is None:
         argv = sys.argv
     args = opthandling.argparsing()
-   
+
     if args.number:
-        send(args.broker, args.port, args.qos, int(args.number), 
-            float(args.interval), args.topic, args.subtopic1, args.subtopic2, 
-            args.load, args.random, args.timestamp, args.counter)
+        send(args.broker, args.port, args.qos, int(args.number),
+             float(args.interval), args.topic, args.subtopic1, args.subtopic2,
+             args.load, args.random, args.timestamp, args.counter)
 
 if __name__ == '__main__':
     """Main program entry point"""
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     try:
         sys.exit(main(sys.argv))
-        #sys.exit(main())
     except KeyboardInterrupt:
         print('Interrupted, exiting...')
         sys.exit(1)
