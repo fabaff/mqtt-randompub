@@ -4,9 +4,10 @@
 # Released under the MIT license. See LICENSE file for details.
 #
 import argparse
-import ConfigParser
+import configparser
 
-# Credits: Von Welch 
+
+# Credits: Von Welch
 # http://blog.vwelch.com/2011/04/combining-configparser-and-argparse.html
 def argparsing():
     """
@@ -14,11 +15,11 @@ def argparsing():
     confiurations files.
     """
     conf_parser = argparse.ArgumentParser(
-	    description = 'This tool send MQTT messages to random topics',
-        prog = 'mqtt-randompub',
-	    epilog = 'Please report all bugs and comment.',
-        formatter_class = argparse.RawDescriptionHelpFormatter,
-        add_help = False
+        description='This tool send MQTT messages to random topics',
+        prog='mqtt-randompub',
+        epilog='Please report all bugs and comment.',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        add_help=False
         )
     conf_parser.add_argument('-f', '--config',
                              help='configuration file to use')
@@ -27,19 +28,18 @@ def argparsing():
     if args.config:
         config = ConfigParser.SafeConfigParser()
         config.read([args.config])
-        default_mqtt = dict(config.items("MQTT")) 
+        default_mqtt = dict(config.items("MQTT"))
         default_topic = dict(config.items("Topic"))
         default_payload = dict(config.items("Payload"))
     else:
-        default_mqtt = {'broker' : '127.0.0.1',
-                        'port' : '1883',
-                        'qos' : '0'
+        default_mqtt = {'broker': '127.0.0.1',
+                        'port': '1883',
+                        'qos': '0'
                         }
-        default_topic = {'topic' : 'test',
-                         'subtopic1' : ['a', 'b', 'c'],
-                         'subtopic2' : [0, 1]
-                        }
-        default_payload = {'load' : '## Test message from mqtt-randompub.'}
+        default_topic = {'topic': 'test',
+                         'subtopic1': ['a', 'b', 'c'],
+                         'subtopic2': [0, 1]}
+        default_payload = {'load': '## Test message from mqtt-randompub.'}
 
     parser = argparse.ArgumentParser(parents=[conf_parser])
     parser.set_defaults(**default_mqtt)
