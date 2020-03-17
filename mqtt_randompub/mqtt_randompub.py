@@ -1,9 +1,4 @@
-"""
-This file is part of mqtt-randompub
-
-Copyright (c) 2013-2016, Fabian Affolter <fabian@affolter-engineering.ch>
-Released under the MIT license. See LICENSE file for details.
-"""
+"""Main part for sending MQTT messages."""
 import random
 import time
 import sys
@@ -14,7 +9,7 @@ import itertools
 try:
     import paho.mqtt.client as mqtt
 except ImportError:
-    print('Please install the paho-mqtt module to use mqtt-randompub.')
+    print('Please install the paho-mqtt module to use mqtt-randompub')
 
 from mqtt_randompub import opthandling
 
