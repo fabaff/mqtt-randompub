@@ -1,17 +1,18 @@
 """Main part for sending MQTT messages."""
-import random
-import time
-import sys
-import os
-import signal
 import itertools
+import os
+import random
+import signal
+import sys
+import time
+
+from mqtt_randompub import opthandling
 
 try:
     import paho.mqtt.client as mqtt
 except ImportError:
     print("Please install the paho-mqtt module to use mqtt-randompub")
 
-from mqtt_randompub import opthandling
 
 
 def send(
