@@ -7,8 +7,8 @@ import configparser
 # http://blog.vwelch.com/2011/04/combining-configparser-and-argparse.html
 def argparsing():
     """
-    Handling command-line options, default values, and options provided by
-    confiurations files.
+    Handling command-line options, default values and options provided by
+    configurations files.
     """
     conf_parser = argparse.ArgumentParser(
         description="This tool send MQTT messages to random topics",
@@ -40,7 +40,7 @@ def argparsing():
     parser.set_defaults(**default_topic)
     parser.set_defaults(**default_payload)
     parser.add_argument("-b", "--broker", help="set the broker")
-    parser.add_argument("-p", "--port", help="set the proker port")
+    parser.add_argument("-p", "--port", help="set the broker port")
     parser.add_argument("-q", "--qos", help="set the QoS of the messages")
     parser.add_argument("-t", "--topic", help="set the main topic")
     parser.add_argument("-s", "--subtopic1", help="set the first subtopic")
