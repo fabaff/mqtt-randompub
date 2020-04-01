@@ -15,19 +15,21 @@ Prerequisites/Installation
 
 Get the files
 _____________
+
 Clone the ``mqtt-randompub`` `repository`_::
 
     git clone git@github.com:fabaff/mqtt-randompub.git
 
 or use `pip`_ to make an installation.::
 
-    sudo python-pip install mqtt-randompub
+    pip3 install mqtt-randompub --user
 
 .. _repository: https://github.com/fabaff/mqtt-randompub
 .. _pip: https://pypi.python.org/pypi/mqtt-randompub
 
 Dependencies
 ____________
+
 ``mqtt-randompub`` depends only on `paho-mqtt`_ . This module should be
 pulled in automatically when installed with `pip`_. 
 
@@ -75,7 +77,7 @@ port **1883**.
 For local testing run a MQTT broker/server on **localhost**. 
 
 - `mosca`_ - A multi-transport MQTT broker
-  for node.js
+  for node.js (no longer maintained)
 - `mosquitto`_ - An Open Source MQTT v3.1 Broker
 
 and subscribe to the topic ``test/#`` with a MQTT client. For example::
