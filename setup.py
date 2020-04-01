@@ -17,7 +17,7 @@ setup(
     author_email="fabian@affolter-engineering.ch",
     maintainer="Fabian Affolter",
     maintainer_email="fabian@affolter-engineering.ch",
-    url="http://affolter-engineering.ch/mqtt-randompub/",
+    url="https://github.com/fabaff/mqtt-randompub/",
     license="MIT",
     platforms="Linux",
     packages=["mqtt_randompub"],
