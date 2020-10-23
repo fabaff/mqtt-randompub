@@ -1,4 +1,4 @@
-"""Input handling"""
+"""Input handling for user input."""
 import argparse
 import configparser
 
