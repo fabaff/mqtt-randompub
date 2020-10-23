@@ -14,7 +14,6 @@ except ImportError:
     print("Please install the paho-mqtt module to use mqtt-randompub")
 
 
-
 def send(
     broker,
     port,
