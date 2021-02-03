@@ -42,6 +42,7 @@ On a Fedora system::
 
 Usage
 -----
+
 To run ``mqtt-randompub`` just type::
 
     $ mqtt-randompub -h
@@ -93,4 +94,5 @@ set of topics. Check the `mqtt-randompub.example`_ file for details.
 
 License
 -------
+
 ``mqtt-randompub`` licensed under MIT, for more details check LICENSE.
