@@ -20,7 +20,7 @@ Clone the ``mqtt-randompub`` `repository`_::
 
     git clone git@github.com:fabaff/mqtt-randompub.git
 
-or use `pip`_ to make an installation.::
+or use `pip`_ to make an installation::
 
     pip3 install mqtt-randompub --user
 
