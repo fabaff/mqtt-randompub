@@ -13,6 +13,14 @@ test scenarios.
 Prerequisites/Installation
 --------------------------
 
+Use `pip`_ to make an installation::
+
+    pip3 install mqtt-randompub --user
+
+There is also a Fedora package available::
+
+   sudo dnf -y install mqtt-randompub
+
 Get the files
 _____________
 
@@ -20,9 +28,7 @@ Clone the ``mqtt-randompub`` `repository`_::
 
     git clone git@github.com:fabaff/mqtt-randompub.git
 
-or use `pip`_ to make an installation::
-
-    pip3 install mqtt-randompub --user
+Use this option if you want to modify the code or contribute.
 
 .. _repository: https://github.com/fabaff/mqtt-randompub
 .. _pip: https://pypi.python.org/pypi/mqtt-randompub
