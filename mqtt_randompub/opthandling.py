@@ -21,7 +21,7 @@ def argparsing():
     args, remaining_argv = conf_parser.parse_known_args()
 
     if args.config:
-        config = ConfigParser.SafeConfigParser()
+        config = configparser.SafeConfigParser()
         config.read([args.config])
         default_mqtt = dict(config.items("MQTT"))
         default_topic = dict(config.items("Topic"))
