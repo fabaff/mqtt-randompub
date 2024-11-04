@@ -30,7 +30,12 @@ def send(
 ):
     """Send messages to MQTT broker."""
     count = 1
-    mqttclient = mqtt.Client("mqtt-randompub")
+    if "CallbackAPIVersion" in dir(mqtt):
+        # paho.mqtt 2.0+
+        mqttclient = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, "mqtt-randompub")
+    else:
+        # paho.mqtt < 2.0
+        mqttclient = mqtt.Client("mqtt-randompub")
     mqttclient.connect(broker, port=int(port))
 
     if number == 0:
