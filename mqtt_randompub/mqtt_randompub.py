@@ -1,4 +1,5 @@
 """Main part for sending MQTT messages."""
+
 import itertools
 import os
 import random
