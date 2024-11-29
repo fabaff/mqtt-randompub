@@ -10,7 +10,7 @@ with open(os.path.join(here, "README.rst"), encoding="utf-8") as readme:
 
 setup(
     name="mqtt-randompub",
-    version="0.2.2",
+    version="0.3.0",
     description="Tool for generating MQTT messages on various topics",
     long_description=long_description,
     author="Fabian Affolter",
