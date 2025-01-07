@@ -21,6 +21,13 @@ There is also a Fedora package available::
 
    sudo dnf -y install mqtt-randompub
 
+For Nix or NixOS users is a package available. Keep in mind that the lastest releases might only
+be present in the ``unstable`` channel.
+
+.. code:: bash
+
+   $ nix-env -iA nixos.mqtt-randompub
+
 Get the files
 _____________
 
