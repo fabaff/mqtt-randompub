@@ -15,6 +15,8 @@ Prerequisites/Installation
 
 Use `pip`_ to make an installation.
 
+.. code:: bash
+
     $ pip3 install mqtt-randompub --user
 
 There is also a Fedora package available.
@@ -106,7 +108,7 @@ and subscribe to the topic ``test/#`` with a MQTT client. For example:
 
 .. code:: bash
 
-    mosquitto_sub -h localhost -d -t test/#
+    $ mosquitto_sub -h localhost -d -t test/#
 
 You can run ``mqtt-randompub`` with a configuration file to re-use a previous
 set of topics. Check the `mqtt-randompub.example`_ file for details.
