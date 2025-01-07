@@ -13,13 +13,15 @@ test scenarios.
 Prerequisites/Installation
 --------------------------
 
-Use `pip`_ to make an installation::
+Use `pip`_ to make an installation.
 
-    pip3 install mqtt-randompub --user
+    $ pip3 install mqtt-randompub --user
 
-There is also a Fedora package available::
+There is also a Fedora package available.
 
-   sudo dnf -y install mqtt-randompub
+.. code:: bash
+
+   $ sudo dnf -y install mqtt-randompub
 
 For Nix or NixOS users is a package available. Keep in mind that the lastest releases might only
 be present in the ``unstable`` channel.
@@ -31,7 +33,9 @@ be present in the ``unstable`` channel.
 Get the files
 _____________
 
-Clone the ``mqtt-randompub`` `repository`_::
+Clone the ``mqtt-randompub`` `repository`_.
+
+.. code:: bash
 
     git clone git@github.com:fabaff/mqtt-randompub.git
 
@@ -46,7 +50,9 @@ ____________
 ``mqtt-randompub`` depends only on `paho-mqtt`_ . This module should be
 pulled in automatically when installed with `pip`_. 
 
-On a Fedora system::
+On a Fedora system:
+
+.. code:: bash
 
     sudo dnf -y install python-paho-mqtt
 
@@ -56,7 +62,9 @@ On a Fedora system::
 Usage
 -----
 
-To run ``mqtt-randompub`` just type::
+To run ``mqtt-randompub`` just type:
+
+.. code:: bash
 
     $ mqtt-randompub -h
     usage: mqtt-randompub [-h] [-c CONFIG] [-b BROKER] [-p PORT] [-q QOS]
@@ -94,7 +102,9 @@ For local testing run a MQTT broker/server on **localhost**.
   for node.js (no longer maintained)
 - `mosquitto`_ - An Open Source MQTT v3.1 Broker
 
-and subscribe to the topic ``test/#`` with a MQTT client. For example::
+and subscribe to the topic ``test/#`` with a MQTT client. For example:
+
+.. code:: bash
 
     mosquitto_sub -h localhost -d -t test/#
 
