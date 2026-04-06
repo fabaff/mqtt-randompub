@@ -6,7 +6,7 @@ import configparser
 
 # Credits: Von Welch
 # http://blog.vwelch.com/2011/04/combining-configparser-and-argparse.html
-def argparsing():
+def argparsing(args=None):
     """
     Handling command-line options, default values and options provided by
     configurations files.
@@ -19,7 +19,7 @@ def argparsing():
         add_help=False,
     )
     conf_parser.add_argument("-f", "--config", help="configuration file to use")
-    args, remaining_argv = conf_parser.parse_known_args()
+    args, remaining_argv = conf_parser.parse_known_args(args)
 
     if args.config:
         config = configparser.SafeConfigParser()

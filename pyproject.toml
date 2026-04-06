@@ -32,6 +32,9 @@ classifiers = [
 ]
 dependencies = ["paho-mqtt"]
 
+[project.optional-dependencies]
+test = ["pytest"]
+
 [project.urls]
 Homepage = "https://github.com/fabaff/mqtt-randompub/"
 
