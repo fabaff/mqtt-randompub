@@ -1,3 +1,0 @@
-include LICENSE
-Include AUTHORS ChangeLog README.rst
-include mqtt-randompub.example
