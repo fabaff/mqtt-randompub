@@ -34,7 +34,18 @@ classifiers = [
 dependencies = ["paho-mqtt"]
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = [
+  "pytest>=9",
+]
+
+[tool.hatch.envs.test]
+dependencies = [
+  "pytest>=9",
+]
+
+[tool.hatch.envs.test.scripts]
+run = "pytest"
+
 
 [project.urls]
 Homepage = "https://github.com/fabaff/mqtt-randompub/"
