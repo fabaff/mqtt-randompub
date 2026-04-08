@@ -3,16 +3,10 @@
 import time
 from unittest.mock import patch
 
-import pytest
-
-from mqtt_randompub.mqtt_randompub import (
-    generate_message,
-    generate_random_num,
-    generate_timestamp,
-    generate_topic,
-    random_subtopic,
-    str2list,
-)
+from mqtt_randompub.mqtt_randompub import (generate_message,
+                                           generate_random_num,
+                                           generate_timestamp, generate_topic,
+                                           random_subtopic, str2list)
 
 
 class TestStr2List:
