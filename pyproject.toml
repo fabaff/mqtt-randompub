@@ -41,6 +41,7 @@ test = [
 [tool.hatch.envs.test]
 dependencies = [
   "pytest>=9",
+  "paho-mqtt>2.0.0",
 ]
 
 [tool.hatch.envs.test.scripts]
