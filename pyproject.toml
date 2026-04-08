@@ -30,6 +30,7 @@ classifiers = [
     "Topic :: System",
     "Topic :: System :: Networking",
 ]
+
 dependencies = ["paho-mqtt"]
 
 [project.optional-dependencies]
