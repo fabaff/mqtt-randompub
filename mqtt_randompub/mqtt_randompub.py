@@ -9,10 +9,7 @@ from typing import Any, List, Optional, Union
 
 from mqtt_randompub import opthandling
 
-try:
-    import paho.mqtt.client as mqtt
-except ImportError:
-    print("Please install the paho-mqtt module to use mqtt-randompub")
+import paho.mqtt.client as mqtt
 
 
 def send(
