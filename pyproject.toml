@@ -58,7 +58,6 @@ include = [
     "mqtt_randompub/",
     "LICENSE",
     "AUTHORS",
-    "ChangeLog",
     "README.rst",
     "mqtt-randompub.example",
 ]
