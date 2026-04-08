@@ -34,7 +34,7 @@ def send(
     mqttclient.connect(broker, port=int(port))
 
     if number == 0:
-        print(f"Messages are published on topic {topic}/#... ->CTRL + C to shutdown")
+        print(f"Messages are published on topic {topic}/#... -> CTRL + C to shutdown")
         while True:
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp, random)
