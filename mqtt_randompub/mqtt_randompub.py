@@ -75,10 +75,11 @@ def generate_message(
     else:
         # Always work with a list for random_subtopic
         if isinstance(payload, list):
-            payload_lst = payload
+            payload_list = payload
         else:
-            payload_lst = str2list(payload)
-        gen_payload = random_subtopic(payload_lst)
+            payload_list = string2list(payload)
+        gen_payload = random_subtopic(payload_list)
+
         if timestamp:
             generated_payload = f"{gen_payload} {generate_timestamp()}"
         else:
@@ -94,18 +95,18 @@ def generate_topic(
     """The generator for the topic."""
     # Always work with a list for random_subtopic
     if isinstance(subtopic1, list):
-        stopic1_lst = subtopic1
+        subtopic1_list = subtopic1
     else:
-        stopic1_lst = str2list(subtopic1)
-    stopic1 = random_subtopic(stopic1_lst)
+        subtopic1_list = string2list(subtopic1)
+    subtopic1 = random_subtopic(subtopic1_list)
 
     if isinstance(subtopic2, list):
-        stopic2_lst = subtopic2
+        subtopic2_list = subtopic2
     else:
-        stopic2_lst = str2list(subtopic2)
-    stopic2 = random_subtopic(stopic2_lst)
-
-    generated_topic = f"{topic}/{stopic1}/{stopic2}"
+        subtopic2_list = string2list(subtopic2)
+    subtopic2 = random_subtopic(subtopic2_list)
+    
+    generated_topic = f"{topic}/{subtopic1}/{subtopic2}"
     return generated_topic
 
 
@@ -114,12 +115,12 @@ def random_subtopic(items: List[Any]) -> Any:
     return random.choice(items)
 
 
-def str2list(value: Union[str, List[Any]]) -> List[str]:
+def string2list(value: Union[str, List[Any]]) -> List[str]:
     """Return a list of strings, or the input if already a list."""
     if isinstance(value, list):
         return value
-    str_lst = value.split(",")
-    return [s.strip() for s in str_lst]
+    string_list = value.split(",")
+    return [string.strip() for string in string_list]
 
 
 def generate_random_num() -> int:

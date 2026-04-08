@@ -5,27 +5,27 @@ import time
 from mqtt_randompub.mqtt_randompub import (generate_message,
                                            generate_random_num,
                                            generate_timestamp, generate_topic,
-                                           random_subtopic, str2list)
+                                           random_subtopic, string2list)
 
 
-class TestStr2List:
-    """Tests for str2list."""
+class TestString2List:
+    """Tests for string2list."""
 
     def test_single_item(self):
         """Tests that a single item string is converted to a list with one item."""
-        assert str2list("a") == ["a"]
+        assert string2list("a") == ["a"]
 
     def test_multiple_items(self):
         """Tests that a comma-separated string is converted to a list of items."""
-        assert str2list("a,b,c") == ["a", "b", "c"]
+        assert string2list("a,b,c") == ["a", "b", "c"]
 
     def test_strips_whitespace(self):
         """Tests that whitespace around items is stripped."""
-        assert str2list("a, b, c") == ["a", "b", "c"]
+        assert string2list("a, b, c") == ["a", "b", "c"]
 
     def test_strips_leading_and_trailing_whitespace(self):
         """Tests that leading and trailing whitespace is stripped."""
-        assert str2list("  foo , bar ") == ["foo", "bar"]
+        assert string2list("  foo , bar ") == ["foo", "bar"]
 
 
 class TestRandomSubtopic:
