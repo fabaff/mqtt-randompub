@@ -72,13 +72,14 @@ def generate_message(payload, timestamp, random):
     if random:
         generated_payload = generate_random_num()
     else:
-        if type(payload) is list:
-            payload_lst = str2list(payload)
-            gen_payload = random_subtopic(payload_lst)
+        # Always work with a list for random_subtopic
+        if isinstance(payload, list):
+            payload_lst = payload
         else:
-            gen_payload = random_subtopic(payload)
+            payload_lst = str2list(payload)
+        gen_payload = random_subtopic(payload_lst)
         if timestamp:
-            generated_payload = gen_payload + " " + str(generate_timestamp())
+            generated_payload = f"{gen_payload} {generate_timestamp()}"
         else:
             generated_payload = gen_payload
     return generated_payload
@@ -86,31 +87,35 @@ def generate_message(payload, timestamp, random):
 
 def generate_topic(topic, subtopic1, subtopic2):
     """The generator for the topic."""
-    if type(subtopic1) is list:
+    # Always work with a list for random_subtopic
+    if isinstance(subtopic1, list):
+        stopic1_lst = subtopic1
+    else:
         stopic1_lst = str2list(subtopic1)
-        stopic1 = random_subtopic(stopic1_lst)
+    stopic1 = random_subtopic(stopic1_lst)
+
+    if isinstance(subtopic2, list):
+        stopic2_lst = subtopic2
     else:
-        stopic1 = random_subtopic(subtopic1)
-    if type(subtopic2) is list:
         stopic2_lst = str2list(subtopic2)
-        stopic2 = random_subtopic(stopic2_lst)
-    else:
-        stopic2 = random_subtopic(subtopic2)
-    generated_topic = topic + "/" + str(stopic1) + "/" + str(stopic2)
+    stopic2 = random_subtopic(stopic2_lst)
+
+    generated_topic = f"{topic}/{stopic1}/{stopic2}"
     return generated_topic
 
 
-def random_subtopic(list):
-    """Return a random topic."""
-    return random.choice(list)
+
+def random_subtopic(items):
+    """Return a random item from a list."""
+    return random.choice(items)
 
 
-def str2list(string):
-    """Return a list of strings."""
-    str_lst = string.split(",")
-    for i, s in enumerate(str_lst):
-        str_lst[i] = s.strip()
-    return str_lst
+def str2list(val):
+    """Return a list of strings, or the input if already a list."""
+    if isinstance(val, list):
+        return val
+    str_lst = val.split(",")
+    return [s.strip() for s in str_lst]
 
 
 def generate_random_num():
