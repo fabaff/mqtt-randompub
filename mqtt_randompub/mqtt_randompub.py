@@ -29,12 +29,8 @@ def send(
 ):
     """Send messages to MQTT broker."""
     count = 1
-    if "CallbackAPIVersion" in dir(mqtt):
-        # paho.mqtt 2.0+
-        mqttclient = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, "mqtt-randompub")
-    else:
-        # paho.mqtt < 2.0
-        mqttclient = mqtt.Client("mqtt-randompub")
+
+    mqttclient = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, "mqtt-randompub")
     mqttclient.connect(broker, port=int(port))
 
     if number == 0:
@@ -64,6 +60,7 @@ def send(
                 mqttclient.publish(complete_topic, message)
             count = count + 1
             time.sleep(interval)
+    print(f"Message sent {count} messages to topic {complete_topic}")
     mqttclient.disconnect()
 
 
@@ -104,17 +101,16 @@ def generate_topic(topic, subtopic1, subtopic2):
     return generated_topic
 
 
-
 def random_subtopic(items):
     """Return a random item from a list."""
     return random.choice(items)
 
 
-def str2list(val):
+def str2list(value):
     """Return a list of strings, or the input if already a list."""
-    if isinstance(val, list):
-        return val
-    str_lst = val.split(",")
+    if isinstance(value, list):
+        return value
+    str_lst = value.split(",")
     return [s.strip() for s in str_lst]
 
 
@@ -130,7 +126,7 @@ def generate_timestamp():
 
 
 def main(argv=None):
-    """Main"""
+    """Main function for mqtt-randompub."""
     if argv is None:
         argv = sys.argv
     args = opthandling.argparsing()
