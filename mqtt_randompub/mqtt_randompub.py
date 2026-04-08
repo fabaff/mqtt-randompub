@@ -38,23 +38,23 @@ def send(
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp, random)
             if counter:
-                mqttclient.publish(complete_topic, "{} {}".format(str(count), message))
+                mqttclient.publish(complete_topic, f"{count} {message}", qos=int(qos))
             else:
-                mqttclient.publish(complete_topic, message, random)
+                mqttclient.publish(complete_topic, message, qos=int(qos))
             time.sleep(interval)
             count = count + 1
     elif number == 1:
         complete_topic = generate_topic(topic, subtopic1, subtopic2)
         message = generate_message(payload, timestamp, random)
-        mqttclient.publish(complete_topic, message)
+        mqttclient.publish(complete_topic, message, qos=int(qos))
     else:
         for x in range(1, number + 1):
             complete_topic = generate_topic(topic, subtopic1, subtopic2)
             message = generate_message(payload, timestamp, random)
             if counter:
-                mqttclient.publish(complete_topic, "{} {}".format(str(count), message))
+                mqttclient.publish(complete_topic, f"{count} {message}", qos=int(qos))
             else:
-                mqttclient.publish(complete_topic, message)
+                mqttclient.publish(complete_topic, message, qos=int(qos))
             count = count + 1
             time.sleep(interval)
     print(f"Message sent {count} messages to topic {complete_topic}")
