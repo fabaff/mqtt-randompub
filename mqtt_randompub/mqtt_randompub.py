@@ -1,9 +1,11 @@
 """Main part for sending MQTT messages."""
 
+
 import random
 import signal
 import sys
 import time
+from typing import Any, List, Optional, Union
 
 from mqtt_randompub import opthandling
 
@@ -14,19 +16,19 @@ except ImportError:
 
 
 def send(
-    broker,
-    port,
-    qos,
-    number,
-    interval,
-    topic,
-    subtopic1,
-    subtopic2,
-    payload,
-    random,
-    timestamp,
-    counter,
-):
+    broker: str,
+    port: Union[str, int],
+    qos: Union[str, int],
+    number: int,
+    interval: float,
+    topic: str,
+    subtopic1: Union[str, List[Any]],
+    subtopic2: Union[str, List[Any]],
+    payload: Union[str, List[Any], None],
+    random: bool,
+    timestamp: bool,
+    counter: bool,
+) -> None:
     """Send messages to MQTT broker."""
     count = 1
 
@@ -62,7 +64,11 @@ def send(
     mqttclient.disconnect()
 
 
-def generate_message(payload, timestamp, random):
+def generate_message(
+    payload: Union[str, List[Any], None],
+    timestamp: bool,
+    random: bool
+) -> Union[str, int]:
     """The generator for the messages."""
     if random:
         generated_payload = generate_random_num()
@@ -80,7 +86,11 @@ def generate_message(payload, timestamp, random):
     return generated_payload
 
 
-def generate_topic(topic, subtopic1, subtopic2):
+def generate_topic(
+    topic: str,
+    subtopic1: Union[str, List[Any]],
+    subtopic2: Union[str, List[Any]]
+) -> str:
     """The generator for the topic."""
     # Always work with a list for random_subtopic
     if isinstance(subtopic1, list):
@@ -99,12 +109,12 @@ def generate_topic(topic, subtopic1, subtopic2):
     return generated_topic
 
 
-def random_subtopic(items):
+def random_subtopic(items: List[Any]) -> Any:
     """Return a random item from a list."""
     return random.choice(items)
 
 
-def str2list(value):
+def str2list(value: Union[str, List[Any]]) -> List[str]:
     """Return a list of strings, or the input if already a list."""
     if isinstance(value, list):
         return value
@@ -112,18 +122,18 @@ def str2list(value):
     return [s.strip() for s in str_lst]
 
 
-def generate_random_num():
+def generate_random_num() -> int:
     """Return a random generated number."""
     return random.randrange(0, 100, 1)
 
 
-def generate_timestamp():
+def generate_timestamp() -> int:
     """Return the current timestamp."""
     timestamp = int(time.time())
     return timestamp
 
 
-def main(argv=None):
+def main(argv: Optional[List[str]] = None) -> None:
     """Main function for mqtt-randompub."""
     if argv is None:
         argv = sys.argv
