@@ -72,7 +72,7 @@ def generate_message(payload, timestamp, random):
     if random:
         generated_payload = generate_random_num()
     else:
-        if type(payload) != list:
+        if type(payload) is list:
             payload_lst = str2list(payload)
             gen_payload = random_subtopic(payload_lst)
         else:
@@ -86,12 +86,12 @@ def generate_message(payload, timestamp, random):
 
 def generate_topic(topic, subtopic1, subtopic2):
     """The generator for the topic."""
-    if type(subtopic1) != list:
+    if type(subtopic1) is list:
         stopic1_lst = str2list(subtopic1)
         stopic1 = random_subtopic(stopic1_lst)
     else:
         stopic1 = random_subtopic(subtopic1)
-    if type(subtopic2) != list:
+    if type(subtopic2) is list:
         stopic2_lst = str2list(subtopic2)
         stopic2 = random_subtopic(stopic2_lst)
     else:
