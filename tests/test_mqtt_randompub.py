@@ -1,7 +1,6 @@
 """Tests for mqtt_randompub module."""
 
 import time
-from unittest.mock import patch
 
 from mqtt_randompub.mqtt_randompub import (generate_message,
                                            generate_random_num,

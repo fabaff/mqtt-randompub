@@ -1,7 +1,5 @@
 """Tests for opthandling module."""
 
-import pytest
-
 from mqtt_randompub.opthandling import argparsing
 
 
