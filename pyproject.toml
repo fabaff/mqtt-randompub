@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mqtt-randompub"
-version = "0.5.0"
+version = "0.5.1"
 description = "Tool for generating MQTT messages on various topics"
 readme = "README.rst"
 license = { text = "MIT" }
@@ -58,7 +58,6 @@ include = [
     "mqtt_randompub/",
     "LICENSE",
     "AUTHORS",
-    "ChangeLog",
     "README.rst",
     "mqtt-randompub.example",
 ]
