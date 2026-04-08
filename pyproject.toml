@@ -46,7 +46,6 @@ dependencies = [
 [tool.hatch.envs.test.scripts]
 run = "pytest"
 
-
 [project.urls]
 Homepage = "https://github.com/fabaff/mqtt-randompub/"
 
